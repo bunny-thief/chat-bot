@@ -36,14 +36,15 @@ public class ChatBot {
                 System.out.println("How can I help you?");
             } else if (counter == 1) {
                 System.out.println("Is there anything else I can help you with?");
-            } else {
+            } else if (counter > 1) {
                 System.out.println("Do you still need my help?");
                 userInput = scanner.nextLine();
                 if ("yes".equals(userInput)) {
+                    counter = 0;
                     continue;
                 } else {
-                    exit();
-                    break;
+                    counter = 0;
+                    continue;
                 }
             }
             counter++;
@@ -68,10 +69,12 @@ public class ChatBot {
             }
 
             if (userInput.toLowerCase().contains("customer") || userInput.toLowerCase().contains("service")) {
+                contactCustomerService();
                 continue;
             }
 
             if (userInput.toLowerCase().contains("contact") || userInput.toLowerCase().contains("info") || userInput.toLowerCase().contains("time")) {
+                contactInfo();
                 continue;
             }
 
@@ -134,9 +137,24 @@ public class ChatBot {
     public void contactCustomerService() {
         System.out.println("You can contact our customer service team directly at:");
         System.out.println("""
-                Customer Sevice
-                +49 1502 7547895
+                Customer Service
+                +44 (0)20 7756 1234
                 customerservice@asos.com
+                """);
+    }
+
+    public void contactInfo() {
+        System.out.println("""
+                Here is our contact info and opening hours:
+                                
+                We are available 24/7 at https://www.asos.com
+                                
+                9:00 - 5:00 BST +44 (0)20 7756 1122
+                ASOS HQ
+                Barlby Road
+                Selby
+                YO8 5BL
+                UK
                 """);
     }
 
